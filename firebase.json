@@ -2,6 +2,6 @@
   "hosting": {
     "site": "plantofera",
 
-    "public": "public"
+    "public": "dist"
   }
 }
