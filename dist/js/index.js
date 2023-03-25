@@ -15,6 +15,7 @@ const firebaseConfig = {
 //init firebase app
 initializeApp(firebaseConfig);
 
+/*
 //init services
 const db = getFirestore();
 
@@ -30,3 +31,4 @@ getDocs(colRef)
         })
         console.log(plants);
     })
+*/
