@@ -1,10 +1,6 @@
-//import { initializeApp } from 'firebase/app';
-//import { getFirestroe, colection, getDocs
-//} from 'firebase/firestore';
-//falta webpack
-
-import { initializeApp } from "https://www.gstatic.com/firebasejs/9.4.0/firebase-app.js";
-import { getFirestore, getDocs, collection } from "https://www.gstatic.com/firebasejs/9.4.0/firebase-firestore.js";
+import { initializeApp } from 'firebase/app'
+import { getFirestroe, colection, getDocs
+} from 'firebase/firestore'
 
 const firebaseConfig = {
     apiKey: "AIzaSyD-rOOA5EI9SX0Nx_JZHBA66aEY4UEPk3Q",
