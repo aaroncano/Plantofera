@@ -1,0 +1,7 @@
+{
+  "hosting": {
+    "site": "plantofera",
+
+    "public": "public"
+  }
+}
