@@ -2,7 +2,7 @@ name: Automatic Firebase Deploy
 on:
   push:
     branches:
-      - master
+      - main
 
 jobs:
   deploy:
@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repo
-        uses: actions/checkout@master
+        uses: actions/checkout@v2
       - name: Deploy to Firebase
         uses: w9jds/firebase-action@master
         with:
