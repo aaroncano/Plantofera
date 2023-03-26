@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Plant</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Comfortaa">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Prompt">
+    <script src="bundle.js"></script>
+</head>
+<body>
+    <div class="title-container">
+        <a href="index.html">
+            <img class="logo" src="images/logo.svg" alt="logo">
+        </a>
+        <h1>Plantofera</h1> 
+    </div>
+    <main>
+        <h3>Añadir planta</h3>
+        <hr>
+        <form class="add">
+            <div class="input-container">
+                <label for="scientific_name" class="label-form">Nombre científico:</label>
+                <input type="text" name="scientific_name" class="input-form" required>
+            </div>
+
+            <div class="input-container">
+                <label for="common_name" class="label-form">Nombre común:</label>
+                <input type="text" name="common_name" class="input-form" required>
+            </div>
+            
+            <div class="input-container">
+                <label for="plant_type" class="label-form">Tipo de planta:</label>
+                <input type="text" name="plant_type" class="input-form" required>
+            </div>
+            
+            <div class="input-container">
+                <label for="light_requirements" class="label-form">Requerimientos de luz:</label>
+                <input type="text" name="light_requirements" class="input-form" required>
+            </div>
+
+            <button class="button-submit">Añadir</button>
+        </form>
+    </main>
+    <footer>
+        <span class="footer-info">Aarón Cano</span>
+        <div>
+            <img class="img-contact" src="images/correo_icono.png" alt="icono_correo">
+            <a href="https://github.com/aaroncano" target="_blank">
+                <img class="img-contact" src="images/github_icono.png" alt="icono_github">
+            </a>
+        </div>
+
+    </footer>
+</body>
+</html>

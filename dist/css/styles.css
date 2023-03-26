@@ -36,7 +36,7 @@ h1,h2,h3, h4{
     font-weight: 900;
 }
 h1{
-    font-size: clamp(3.5em, 1em + 5vw ,7em);
+    font-size: 3em;
     margin: 0;
 }
 h3{
@@ -77,18 +77,18 @@ hr{
 /*Header*/
 .title-container{
     display: flex;
-    justify-content: center;
+    justify-content: start;
     align-items: center;
     column-gap: 2em;
     row-gap: 1em;
     flex-wrap: wrap;
     background-color: var(--clr-primary-100);
     padding: 1em;
-    margin-bottom: 10em;
+    margin-bottom: 4em;
     box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 3px 0px;
 }
 .logo{
-    width: 10em;
+    width: 5em;
     border-radius: 1em;
 }
 
@@ -131,7 +131,6 @@ main{
     }
 }
 .el-list-container{
-    margin: 10px;
     text-align: center;
     overflow-wrap: break-word;
     margin: auto;
@@ -162,7 +161,6 @@ main{
     flex-wrap: wrap;
     justify-content: start;
     align-items: center;
-    margin: auto;
     row-gap: 5em;
     column-gap: clamp(3em, 1em + 10vw, 30em);
     margin: auto clamp(3em, 1em + 10vw, 30em);
@@ -175,6 +173,52 @@ main{
 }
 .info-container{
     max-width: 75ch;
+}
+
+
+.add{
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    row-gap: 5em;
+    column-gap: clamp(3em, 1em + 10vw, 30em);
+    margin: auto clamp(3em, 1em + 10vw, 30em);
+}
+.input-container{
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 5em;
+    row-gap: 1em;
+    margin: auto;
+}
+.input-form{
+    margin: auto;
+    width: clamp(15em, 3em + 55vw, 30em);
+    height: 2em;
+}
+.label-form{
+    text-align: center;
+    margin: auto;
+    width: clamp(15em, 3em + 55vw, 20em);
+
+    display: block;
+    font-size: 1.1em;
+    font-weight: bolder;
+}
+.button-submit{
+    margin: 2em;
+    height: 4em;
+    width: 7em;
+    background-color: var(--clr-primary-400);
+    border-radius: 1em;
+    border: none;
+}
+.button-submit:hover{
+    background-color: var(--clr-primary-700);
+}
+.button-submit:active{
+    background-color: var(--clr-primary-400);
 }
 
 

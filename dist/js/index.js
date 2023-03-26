@@ -1,5 +1,5 @@
 import { initializeApp } from 'firebase/app'
-import { getFirestore, collection, getDocs
+import { getFirestore, collection, getDocs, addDoc
 } from 'firebase/firestore'
 
 const firebaseConfig = {
@@ -30,3 +30,20 @@ getDocs(colRef)
         })
         console.log(plants);
     })
+
+//add documents
+const addPlantForm = document.querySelector('.add');
+addPlantForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    addDoc(colRef, {
+        scientific_name: addPlantForm.scientific_name.value,
+        common_name: addPlantForm.common_name.value,
+        plant_type: addPlantForm.plant_type.value,
+        light_requirements: addPlantForm.light_requirements.value,
+    })
+    .then(() => {
+        history.back();
+    })
+})
+
+//deleting documents
