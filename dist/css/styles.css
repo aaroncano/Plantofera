@@ -36,7 +36,7 @@ h1,h2,h3, h4{
     font-weight: 900;
 }
 h1{
-    font-size: 3em;
+    font-size: 2em;
     margin: 0;
 }
 h3{
@@ -76,26 +76,28 @@ hr{
 
 /*Header*/
 .title-container{
+    position: fixed;
+    width: 100%;
     display: flex;
     justify-content: start;
     align-items: center;
-    column-gap: 2em;
+    column-gap: 1em;
     row-gap: 1em;
     flex-wrap: wrap;
-    background-color: var(--clr-primary-100);
-    padding: 1em;
-    margin-bottom: 4em;
+    background-color: var(--clr-neutral-100);
+    padding: 1em 2em;
     box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 3px 0px;
 }
 .logo{
-    width: 5em;
+    width: 4em;
     border-radius: 1em;
+    display: block;
 }
 
 
 /*Main*/
 main{
-    margin-bottom: clamp(1em, 1em + 10vw, 15em);
+    margin-top: 10em;
     flex-grow: 1;
 }
 .sections-container{
@@ -206,6 +208,10 @@ main{
     font-size: 1.1em;
     font-weight: bolder;
 }
+.button{
+    
+}
+
 .button-submit{
     margin: 2em;
     height: 4em;

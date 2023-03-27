@@ -18,65 +18,23 @@
     </div>
 
     <main>
-        <h3>Plantas encontradas</h3>
+        <h3 id="listName"></h3>
         <hr>
+        <div>
+            <button id="button-add-plant" class="button" onclick="goToAddPlant()">Añadir</button>
+            <button id="button-delete-plant" class="button">Eliminar</button>
+        </div>
+        
         <div class="list-container">
-            <div class="el-list-container">
-                <div class="img-container">
-                    <a href="PlantData.html">
-                        <img class="img" src="images/monstera_exterior.jpg" alt="planta_exterior">
-                    </a>
+
+            <template id="listElement-template">
+                <div class="el-list-container">
+                    <div class="img-container">
+                        <img class="img" src="images/monstera_exterior.jpg">
+                    </div>
+                    <p class="section-title"></p>
                 </div>
-                <p class="section-title">Monstera Deliciosa</p>
-            </div>
-            <div class="el-list-container">
-                <div class="img-container">
-                    <a href="PlantData.html">
-                        <img class="img" src="images/monstera_exterior.jpg" alt="planta_exterior">
-                    </a>
-                </div>
-                <p class="section-title">Monstera Deliciosa</p>
-            </div>
-            <div class="el-list-container">
-                <div class="img-container">
-                    <a href="PlantData.html">
-                        <img class="img" src="images/monstera_exterior.jpg" alt="planta_exterior">
-                    </a>
-                </div>
-                <p class="section-title">Monstera Deliciosa</p>
-            </div>
-            <div class="el-list-container">
-                <div class="img-container">
-                    <a href="PlantData.html">
-                        <img class="img" src="images/monstera_exterior.jpg" alt="planta_exterior">
-                    </a>
-                </div>
-                <p class="section-title">Monstera Deliciosa</p>
-            </div>
-            <div class="el-list-container">
-                <div class="img-container">
-                    <a href="PlantData.html">
-                        <img class="img" src="images/monstera_exterior.jpg" alt="planta_exterior">
-                    </a>
-                </div>
-                <p class="section-title">Monstera Deliciosa</p>
-            </div>
-            <div class="el-list-container">
-                <div class="img-container">
-                    <a href="PlantData.html">
-                        <img class="img" src="images/monstera_exterior.jpg" alt="planta_exterior">
-                    </a>
-                </div>
-                <p class="section-title">Monstera Deliciosa</p>
-            </div>
-            <div class="el-list-container">
-                <div class="img-container">
-                    <a href="newPlant.html">
-                        <img class="img" src="images/plus_icono.png" alt="plus_icon">
-                    </a>
-                </div>
-                <p class="section-title">Añadir Planta</p>
-            </div>
+            </template>
             
         </div>
     </main>
@@ -91,5 +49,6 @@
         </div>
 
     </footer>
+    <script src="bundle.js"></script>
 </body>
 </html>

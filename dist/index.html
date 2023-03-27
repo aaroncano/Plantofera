@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Comfortaa">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Prompt">
-    <script src="bundle.js"></script>
 </head>
 <body>
     <div class="title-container">
@@ -21,17 +20,13 @@
         <div class="sections-container">
             <div class="section-container">
                 <div class="img-container">
-                    <a href="plantsList.html">
-                        <img class="img" src="images/monstera_exterior.jpg" alt="planta_exterior">
-                    </a>
+                    <img class="img" src="images/monstera_exterior.jpg" alt="planta_exterior" onclick="goToPlantsList('Plantas Encontradas')">
                 </div>
                 <p class="section-title">Plantas Encontradas</p>
             </div>
             <div class="section-container">
                 <div class="img-container">
-                    <a href="../html/plantsList.html">
-                    <img class="img" src="images/monstera_interior.jpg" alt="planta_exterior">
-                    </a>
+                    <img class="img" src="images/monstera_interior.jpg" alt="planta_exterior" onclick="goToPlantsList('Plantas Obtenidas')">
                 </div>
                 <p class="section-title">Plantas Obtenidas</p>
             </div>
@@ -47,6 +42,6 @@
         </div>
 
     </footer>
-    
+    <script src="bundle.js"></script>
 </body>
 </html>
