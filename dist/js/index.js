@@ -1,6 +1,7 @@
 import { initializeApp } from 'firebase/app'
 import { getFirestore, collection, getDocs, addDoc
 } from 'firebase/firestore'
+import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage'
 
 const firebaseConfig = {
     apiKey: "AIzaSyD-rOOA5EI9SX0Nx_JZHBA66aEY4UEPk3Q",
@@ -34,7 +35,8 @@ function setPlantsListPage(){
 
     const colRef = getColRef(listName);
     
-    collectDataForList(colRef);
+    collectAllData(colRef, listName);
+    addList();
 }
 function setListName(listName){
     listNameElement.textContent = listName;
@@ -47,16 +49,23 @@ function getColRef(listName){
         return plantas_encontradasColRef;
     }
 }
-function collectDataForList(colRef){
-    getDocs(colRef)
-        .then((snapshot) =>{
-            snapshot.docs.forEach((doc) => {
-                const data = doc.data();
-                data.id = doc.id;
-                plants.push(data);
-            })
-            addList();
-        })    
+function collectAllData(colRef, listName) {
+    let promises = [collectDataOfList(colRef)];
+    if (listName == "Plantas Encontradas") {
+      promises.push(collectDataOfList(plantas_obtenidasColRef));
+    }
+    Promise.all(promises).then(() => {
+      addList();
+    });
+  }
+  
+async function collectDataOfList(colRef){
+    const snapshot = await getDocs(colRef);
+    snapshot.docs.forEach((doc) => {
+        const data = doc.data();
+        data.id = doc.id;
+        plants.push(data);
+    });
 }
 //añadir lista de plantas a html
 function addList() {
@@ -68,6 +77,18 @@ function addList() {
         const listItem = template.content.cloneNode(true);
         listItem.querySelector(".img").dataset.id = index;
         listItem.querySelector(".img").addEventListener("click", goToDataPlantDataPage);
+
+        const storage = getStorage();
+        const imageElement = listItem.querySelector('.img');
+        const imageRef = ref(storage, 'images/' + item.scientific_name);
+        getDownloadURL(imageRef)
+            .then((url) => {
+                imageElement.src = url;
+                imageElement.alt = value;
+            })
+            .catch((error) => {
+                console.error('Error downloading image:', error);
+            });
 
         listItem.querySelector(".section-title").textContent = item.scientific_name;
         fragment.appendChild(listItem);
@@ -115,6 +136,12 @@ function addPlant(){
     addPlantForm.addEventListener('submit', (e) => {
         e.preventDefault();
         
+        const storage = getStorage();
+        const imageUpload = document.getElementById('imageUpload');
+        const file = imageUpload.files[0];
+        const storageRef = ref(storage, 'images/' + addPlantForm.scientific_name.value);
+        uploadBytes(storageRef, file);
+
         addDoc(colRef, {
             scientific_name: addPlantForm.scientific_name.value,
             common_name: addPlantForm.common_name.value,
@@ -125,7 +152,7 @@ function addPlant(){
             history.back();
         })
     })    
-}
+} 
 window.addPlant = addPlant;
 
 
@@ -150,6 +177,18 @@ function writePlantData(){
                     if(key == 'scientific_name'){
                         const titleElement = document.getElementById('plant-name');
                         titleElement.textContent = value;
+
+                        const storage = getStorage();
+                        const imageElement = document.querySelector('.info-img');
+                        const imageRef = ref(storage, 'images/' + value);
+                        getDownloadURL(imageRef)
+                            .then((url) => {
+                                imageElement.src = url;
+                                imageElement.alt = value;
+                            })
+                            .catch((error) => {
+                                console.error('Error downloading image:', error);
+                            });
                     }
                     
                     const nodeValue = document.createTextNode(value);

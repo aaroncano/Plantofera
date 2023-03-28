@@ -45,7 +45,7 @@ h3{
     text-align: center;
     width: 75%;
     margin: auto;
-    margin-bottom: 1em;
+    margin-bottom: 0em;
     padding: 0;
 }
 h4{
@@ -63,7 +63,7 @@ p{
 
 hr{
     width: 75%;
-    margin-bottom: 4.5em;
+    margin-bottom: 3em;
 }
 
 .bold{
@@ -148,7 +148,7 @@ main{
     /*Por ahora se usará su tamaño real width: clamp(20em, 1em + 5vw, 40em);*/
     width: 10em;
     aspect-ratio: 1 / 1;
-    object-fit: cover;
+    object-fit:cover;
     display: block;
 
     transition: transform 0.3s;
@@ -208,9 +208,6 @@ main{
     font-size: 1.1em;
     font-weight: bolder;
 }
-.button{
-    
-}
 
 .button-submit{
     margin: 2em;
@@ -225,6 +222,21 @@ main{
 }
 .button-submit:active{
     background-color: var(--clr-primary-400);
+}
+.button-container{
+    margin: auto;
+    display: flex;
+    justify-content: end;
+    width: 75%;
+    margin-bottom: 3em;
+}
+.button{
+    margin-left: 2em;
+    height: 4em;
+    width: 7em;
+    background-color: var(--clr-primary-400);
+    border-radius: 1em;
+    border: none;
 }
 
 
