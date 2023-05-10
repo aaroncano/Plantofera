@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Plants List</title>
+    <title>Plantofera</title>
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Comfortaa">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Prompt">
@@ -16,29 +16,22 @@
         </a>
         <h1>Plantofera</h1> 
     </div>
-
     <main>
-        <h3 id="listName"></h3>
-        <hr>
-        <div class="button-container">
-            <button id="button-add-plant" class="button" onclick="goToAddPlant()">Añadir</button>
-            <button id="button-delete-plant" class="button" onclick="goToDeletePlant()">Eliminar</button>
-        </div>
-        
-        <div class="list-container">
-
-            <template id="listElement-template">
-                <div class="el-list-container">
-                    <div class="img-container">
-                        <img class="img" src="images/logo.svg" alt="">
-                    </div>
-                    <p class="section-title"></p>
+        <div class="sections-container">
+            <div class="section-container">
+                <div class="img-container">
+                    <img class="img" src="images/monstera_exterior.jpg" alt="planta_exterior" onclick="goToPlantsList('Plantas Encontradas')">
                 </div>
-            </template>
-            
+                <p class="section-title">Plantas Encontradas</p>
+            </div>
+            <div class="section-container">
+                <div class="img-container">
+                    <img class="img" src="images/monstera_interior.jpg" alt="planta_exterior" onclick="goToPlantsList('Plantas Obtenidas')">
+                </div>
+                <p class="section-title">Plantas Obtenidas</p>
+            </div>
         </div>
     </main>
-
     <footer>
         <span class="footer-info">Aarón Cano</span>
         <div>

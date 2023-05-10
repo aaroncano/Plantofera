@@ -1,7 +1,10 @@
 import { initializeApp } from 'firebase/app'
-import { getFirestore, collection, getDocs, addDoc
+import { getFirestore, collection, getDocs, addDoc, doc, deleteDoc,
+    query, where
 } from 'firebase/firestore'
 import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage'
+
+import './Authentication.js'
 
 const firebaseConfig = {
     apiKey: "AIzaSyD-rOOA5EI9SX0Nx_JZHBA66aEY4UEPk3Q",
@@ -17,8 +20,7 @@ const firebaseConfig = {
 initializeApp(firebaseConfig);
 //init services
 const db = getFirestore();
-const plantas_obtenidasColRef = collection(db, 'plantas_obtenidas');
-const plantas_encontradasColRef = collection(db, 'plantas_encontradas');
+const colRef__ = collection(db, 'plantas_encontradas');
 
 let plants = [];
 
@@ -30,41 +32,50 @@ if(listNameElement){
 function setPlantsListPage(){
     const listName = sessionStorage.getItem("listName");
     setListName(listName);
-    
-    setAddDeleteButtons(listName);
 
-    const colRef = getColRef(listName);
+    const plantasObtenidasValue = getPlantasObtenidasValue(listName);
+
+    setAddDeleteButtons(plantasObtenidasValue);
     
-    collectAllData(colRef, listName);
+    collectAllData(plantasObtenidasValue);
     addList();
 }
 function setListName(listName){
     listNameElement.textContent = listName;
 }
-function getColRef(listName){
+function setAddDeleteButtons(plantasObtenidasValue){
+    sessionStorage.setItem("plantasObtenidasValue", plantasObtenidasValue);
+}
+function getPlantasObtenidasValue(listName){
     if(listName == 'Plantas Obtenidas'){
-        return plantas_obtenidasColRef;
+        return '1';
     }
     else{
-        return plantas_encontradasColRef;
+        return '0';
     }
 }
-function collectAllData(colRef, listName) {
-    let promises = [collectDataOfList(colRef)];
-    if (listName == "Plantas Encontradas") {
-      promises.push(collectDataOfList(plantas_obtenidasColRef));
-    }
+function collectAllData(plantasObtenidasValue) {
+    let promises = [collectDataOfList(plantasObtenidasValue)];
+    
     Promise.all(promises).then(() => {
       addList();
     });
-  }
+}
   
-async function collectDataOfList(colRef){
-    const snapshot = await getDocs(colRef);
+async function collectDataOfList(plantasObtenidasValue){
+    const snapshot = await getDocs(colRef__);
     snapshot.docs.forEach((doc) => {
         const data = doc.data();
-        data.id = doc.id;
-        plants.push(data);
+        if(plantasObtenidasValue == '1'){
+            if(data.obtained == '1'){
+                data.id = doc.id;
+                plants.push(data);
+            }
+        }else{
+            data.id = doc.id;
+            plants.push(data);
+        }
+        
     });
 }
 //añadir lista de plantas a html
@@ -118,19 +129,17 @@ function goToAddPlant(){
     window.location.href = "newPlant.html";
 }
 window.goToAddPlant = goToAddPlant;
+function goToDeletePlant(){
+    window.location.href = "deletePlant.html";
+}
+window.goToDeletePlant = goToDeletePlant;
 
-function setAddDeleteButtons(listName){
-    sessionStorage.setItem("listName", listName);
+const elementoUnicoNewPlant = document.querySelector('.add');
+if(elementoUnicoNewPlant){
+    addPlant();
 }
 function addPlant(){
-     const listName = sessionStorage.getItem("listName");
-     let colRef;
-     if(listName == 'Plantas Obtenidas'){
-        colRef = plantas_obtenidasColRef;
-     }else{
-        colRef = plantas_encontradasColRef;
-     }
-
+    const plantasObtenidasValue = sessionStorage.getItem("plantasObtenidasValue");
     const addPlantForm = document.querySelector('.add');
     
     addPlantForm.addEventListener('submit', (e) => {
@@ -142,11 +151,12 @@ function addPlant(){
         const storageRef = ref(storage, 'images/' + addPlantForm.scientific_name.value);
         uploadBytes(storageRef, file);
 
-        addDoc(colRef, {
+        addDoc(colRef__, {
             scientific_name: addPlantForm.scientific_name.value,
             common_name: addPlantForm.common_name.value,
             plant_type: addPlantForm.plant_type.value,
             light_requirements: addPlantForm.light_requirements.value,
+            obtained: plantasObtenidasValue
         })
         .then(() => {
             history.back();
@@ -155,7 +165,33 @@ function addPlant(){
 } 
 window.addPlant = addPlant;
 
+const elementoUnicoDeletePlant = document.querySelector('.delete');
+if(elementoUnicoDeletePlant){
+    deletePlant();
+}
+function deletePlant() {
+    const plantasObtenidasValue = sessionStorage.getItem("plantasObtenidasValue");
+    const deletePlantForm = document.querySelector(".delete");
+  
+    deletePlantForm.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      console.log(deletePlantForm.scientific_name.value);
+      const q = query(colRef__, where('scientific_name', "==", deletePlantForm.scientific_name.value));
 
+      const querySnapshot = await getDocs(q);
+
+      if(!querySnapshot.empty){
+        const docId = querySnapshot.docs[0].id;
+        const docRef = doc(db, 'plantas_encontradas', docId);
+        await deleteDoc(docRef)
+        .then(() => {
+           history.back(); 
+        });
+      }else{
+        console.log("no se encontró ninguna planta");
+      }
+    });
+}
 
 //recolectar datos en PlantData enviados por sessionStorage
 const elementoUnicoPlantData = document.querySelector('.info-container');
@@ -210,7 +246,7 @@ function goToPlantsList(listName){
 }
 window.goToPlantsList = goToPlantsList;
 
-
-
-
-
+function goToMenu(){
+    window.location.href = "Menu.html";
+}
+window.goToMenu = goToMenu;

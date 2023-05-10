@@ -6,23 +6,31 @@
 
     --clr-neutral-100: #fff;
     --clr-neutral-900: #222c2a;
+
+    --primary-color: #3ca370;
+    --secondary-color: #58D68D;
+    --info-color: #3d8dff;
+    --warning-color: #F7DC6F;
+    --danger-color: #FFA726;
+    --pink-color: #FF6B81;
     
-    --font-primary: "Comfortaa", sans-serif;
+    --font-primary: "Open Sans", sans-serif;
     --font-accent: "Prompt", sans-serif;
+    --font-pixel: "VT323", sans-serif;
 }
 *{
     box-sizing: border-box;
     font-family: var(--font-primary);
 }
-
+html{
+    font-size: 62.5%;
+}
 html, body{
     height: 100vh;
     margin: 0;
     padding: 0;
 }
-
 body{
-    font-size: 62.5%;
     line-height: 1.8;
     font-weight: 400;
     color: var(--clr-neutral-900);
@@ -30,14 +38,12 @@ body{
     display:flex;
     flex-direction: column;
 }
-
 h1,h2,h3, h4{
     font-family: var(--font-accent);
     font-weight: 900;
 }
 h1{
-    font-size: 2em;
-    margin: 0;
+    font-size: clamp(3.5em, 1em + 5vw, 5em);
 }
 h3{
     font-size: clamp(3em, 1em + 5vw , 4em);
@@ -56,30 +62,26 @@ h4{
     margin-bottom: 1em;
     padding-top: 1em;
 }
-p{
-    font-size: 1.5em;
-    text-align: justify;
-}
-
 hr{
     width: 75%;
     margin-bottom: 3em;
 }
-
-.bold{
-    display: block;
-    font-size: 1.1em;
-    font-weight: bolder;
-    padding-right: 1em;
+p{
+    font-size: 1.6em;
 }
 
+/* 
+-----------------------
 
-/*Header*/
-.title-container{
+    H  E  A  D  E  R
+
+-----------------------
+*/
+.title-container {
     position: fixed;
     width: 100%;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     column-gap: 1em;
     row-gap: 1em;
@@ -88,21 +90,150 @@ hr{
     padding: 1em 2em;
     box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 3px 0px;
 }
-.logo{
-    width: 4em;
-    border-radius: 1em;
+@media (min-width: 60rem){
+    .title-container{
+        justify-content: space-between;
+    }
+}
+.logo {
+    width: 4rem;
     display: block;
+    aspect-ratio: 1 / 1;
+    border-radius: 1rem;
+    image-rendering: pixelated;
+}
+.name-header{
+    font-size: 2rem;
+    font-family: var(--font-accent);
+    font-weight: 900;
+    margin: auto;
 }
 
+/* 
+-----------------------
 
-/*Main*/
+    M  A  I  N
+
+-----------------------
+*/
 main{
     margin-top: 10em;
     flex-grow: 1;
 }
-.welcomePage-container{
+
+
+/* 
+-----------------------
+
+    C  O  N  T  A  I  N  E  R  S
+
+-----------------------
+*/
+.flex-container {
     display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    row-gap: 10px;
+    column-gap: 10px;
 }
+.column-reverse{
+    flex-direction: column-reverse;
+}
+
+.flex-item {
+    flex-basis: 100%;
+    max-width: 500px;
+}
+.flex-grow{
+    flex-grow: 1;
+    max-width: 1000px;
+}
+
+@media (min-width: 60rem) {
+    .flex-container {
+        flex-direction: row; /* En caso de que se use column-reverse para la versión de movil*/
+    }
+    .flex-item {
+        flex-basis: calc(50% - 20px); /* 50% - espacio de padding */
+    }
+}
+
+
+/* 
+-----------------------
+
+    A  T  T  R  I  B   U  T  E  S
+
+-----------------------
+*/
+.margin-top{
+    margin-top: 20px;
+}
+.padding{
+    padding: 20px;
+}
+.big-padding{
+    padding: clamp(2em, 0.2em + 5vw, 4em);
+}
+.text-center{
+    text-align: center;
+}
+.large-text{
+    font-size: clamp(1.7em, 0.2em + 5vw, 0.2em);
+}
+
+/* 
+-----------------------
+
+    E  L  E  M  E  N  T  S
+
+-----------------------
+*/
+.img-big{
+    display: block;
+    width:100%;
+    object-fit: cover;
+    height: 100%;
+    image-rendering: pixelated;
+    box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;
+}
+
+.btn{
+    display: inline-block;
+    font-size: 1.6em;
+    font-weight: 500;
+    text-align: center;
+    text-decoration: none;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+/* Estilos para un botón principal */
+.btn-primary {
+    background-color: var(--primary-color);
+    color: #ffffff;
+}
+.btn-secondary{
+    background-color: #ffffff;
+} 
+.btn-primary:hover {
+    background-color: var(--danger-color);
+}
+.btn-secondary:hover {
+    background-color: var(--info-color);
+    color: #ffffff;
+}
+
+
+
+
+
+
+
+
+
 
 .sections-container{
     display: flex;
@@ -234,14 +365,7 @@ main{
     width: 75%;
     margin-bottom: 3em;
 }
-.button{
-    margin-left: 2em;
-    height: 4em;
-    width: 7em;
-    background-color: var(--clr-primary-400);
-    border-radius: 1em;
-    border: none;
-}
+
 
 
 /*Footer*/

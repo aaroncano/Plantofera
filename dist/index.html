@@ -5,30 +5,32 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Plantofera</title>
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Comfortaa">
+    <link rel="stylesheet" href="css/stylesNew.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open-Sans">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Prompt">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=VT323">
 </head>
 <body>
     <div class="title-container">
-        <a href="index.html">
-            <img class="logo" src="images/logo.svg" alt="logo">
-        </a>
-        <h1>Plantofera</h1> 
+        <div>
+            <a href="index.html">
+                <img class="logo" src="images/logo3_sincolor.svg" alt="logo">
+            </a>
+        </div>        
+        <div class="flex-container">
+            <button class="btn btn-secondary" id="LoginButton">Sign in</button>
+            <button class="btn btn-primary">Get Started</button>
+        </div>
     </div>
     <main>
-        <div class="sections-container">
-            <div class="section-container">
-                <div class="img-container">
-                    <img class="img" src="images/monstera_exterior.jpg" alt="planta_exterior" onclick="goToPlantsList('Plantas Encontradas')">
-                </div>
-                <p class="section-title">Plantas Encontradas</p>
+        <div class="flex-container column-reverse big-padding">
+            <div class="flex-item padding">
+                <h1>Join Plantofera and let your gardening journey begin.</h1>
+
+                <button class="btn btn-primary margin-top" onclick="goToMenu()">Get started</button>
             </div>
-            <div class="section-container">
-                <div class="img-container">
-                    <img class="img" src="images/monstera_interior.jpg" alt="planta_exterior" onclick="goToPlantsList('Plantas Obtenidas')">
-                </div>
-                <p class="section-title">Plantas Obtenidas</p>
+            <div class="flex-item flex-grow">                
+                <img class="img-big" src="images/garden2.png" alt="planta_exterior">
             </div>
         </div>
     </main>
