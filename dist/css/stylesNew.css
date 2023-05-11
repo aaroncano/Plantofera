@@ -173,7 +173,12 @@ main{
     padding: 20px;
 }
 .big-padding{
-    padding: clamp(2em, 0.2em + 5vw, 4em);
+    padding: 0;
+}
+@media (min-width: 60rem) {
+    .big-padding{
+        padding: clamp(2rem, 0.2rem + 5vw, 4rem);
+    }
 }
 .text-center{
     text-align: center;
@@ -200,11 +205,11 @@ main{
 
 .btn{
     display: inline-block;
-    font-size: 1.6em;
+    font-size: 1.6rem;
     font-weight: 500;
     text-align: center;
     text-decoration: none;
-    padding: 12px 24px;
+    padding: 1.2rem 2.4rem;
     border: none;
     border-radius: 4px;
     cursor: pointer;
@@ -214,15 +219,22 @@ main{
 .btn-primary {
     background-color: var(--primary-color);
     color: #ffffff;
+    font-weight: bold;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
 }
 .btn-secondary{
     background-color: #ffffff;
+    color: var(--clr-neutral-900);
+}
+.btn-big{
+    padding: 1.2rem 8rem;
 } 
 .btn-primary:hover {
     background-color: var(--danger-color);
 }
 .btn-secondary:hover {
-    background-color: var(--info-color);
+    background-color: var(--clr-neutral-900);
+    color: #fff;
     color: #ffffff;
 }
 
