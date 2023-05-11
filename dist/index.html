@@ -9,19 +9,18 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open-Sans">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Prompt">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=VT323">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+    <script>
+        $(function(){
+            $('#header').load('header.html', function(){
+                $.getScript('bundle.js');
+            });
+            $('#footer').load('footer.html');
+        });
+    </script>
 </head>
 <body>
-    <div class="title-container">
-        <div>
-            <a href="index.html">
-                <img class="logo" src="images/logo3_sincolor.svg" alt="logo">
-            </a>
-        </div>        
-        <div class="flex-container">
-            <button class="btn btn-secondary" id="LoginButton">Sign in</button>
-            <button class="btn btn-primary">Get Started</button>
-        </div>
-    </div>
+    <div id="header"></div>
     <main>
         <div class="flex-container column-reverse big-padding">
             <div class="flex-item padding">
@@ -34,16 +33,6 @@
             </div>
         </div>
     </main>
-    <footer>
-        <span class="footer-info">Aarón Cano</span>
-        <div>
-            <img class="img-contact" src="images/correo_icono.png" alt="icono_correo">
-            <a href="https://github.com/aaroncano" target="_blank">
-                <img class="img-contact" src="images/github_icono.png" alt="icono_github">
-            </a>
-        </div>
-
-    </footer>
-    <script src="bundle.js"></script>
+    <footer id="footer"></footer>
 </body>
 </html>

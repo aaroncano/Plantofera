@@ -4,18 +4,23 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Plantofera</title>
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Comfortaa">
+    <title>Plantofera Menu</title>
+    <link rel="stylesheet" href="css/stylesNew.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open-Sans">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Prompt">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=VT323">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+    <script>
+        $(function(){
+            $('#header').load('header.html', function(){
+                $.getScript('bundle.js');
+            });
+            $('#footer').load('footer.html');
+        });
+    </script>
 </head>
 <body>
-    <div class="title-container">
-        <a href="index.html">
-            <img class="logo" src="images/logo.svg" alt="logo">
-        </a>
-        <h1>Plantofera</h1> 
-    </div>
+    <div id="header"></div>
     <main>
         <div class="sections-container">
             <div class="section-container">
@@ -32,16 +37,7 @@
             </div>
         </div>
     </main>
-    <footer>
-        <span class="footer-info">Aarón Cano</span>
-        <div>
-            <img class="img-contact" src="images/correo_icono.png" alt="icono_correo">
-            <a href="https://github.com/aaroncano" target="_blank">
-                <img class="img-contact" src="images/github_icono.png" alt="icono_github">
-            </a>
-        </div>
-
-    </footer>
+    <footer id="footer"></footer>
     <script src="bundle.js"></script>
 </body>
 </html>
